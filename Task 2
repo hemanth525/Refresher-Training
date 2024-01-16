@@ -52,7 +52,9 @@ GROUP BY Couriers.courier_id, Couriers.courier_name;
 11. List all packages with a specific weight range: 
 SELECT *
 FROM Parcels
-WHERE weight BETWEEN 10 AND 20; -- Adjust the weight range as needed
+WHERE weight BETWEEN 10 AND 20; 
+
+-- Adjust the weight range as needed
 
 12. Retrieve employees whose names contain 'John' 
 SELECT *
@@ -62,7 +64,7 @@ WHERE customer_name LIKE '%John%';
 13. Retrieve all courier records with payments greater than $50. 
 SELECT *
 FROM Couriers
-WHERE payment_amount > 50; -- Adjust the condition based on your actual schema
+WHERE payment_amount > 50; 
 
 
 
