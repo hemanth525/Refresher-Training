@@ -1,0 +1,168 @@
+23. Retrieve Payments with Courier Information 
+
+SELECT p.PaymentID, p.Amount, p.PaymentDate, c.CourierID, c.SenderName, c.ReceiverName
+FROM payments p
+JOIN couriers c ON p.CourierID = c.CourierID;
+
+24. Retrieve Payments with Location Information 
+
+SELECT p.*, l.*
+FROM payments p
+JOIN locations l ON p.LocationID = l.LocationID;
+
+
+25. Retrieve Payments with Courier and Location Information 
+
+SELECT p.*, c.*, l.*
+FROM payments p
+JOIN couriers c ON p.CourierID = c.CourierID
+JOIN locations l ON p.LocationID = l.LocationID;
+
+26. List all payments with courier details 
+
+SELECT p.*, c.*
+FROM payments p
+LEFT JOIN couriers c ON p.CourierID = c.CourierID;
+
+27. Total payments received for each courier 
+
+SELECT c.CourierID, c.SenderName, c.ReceiverName, SUM(p.Amount) AS TotalPaymentsReceived
+FROM couriers c
+LEFT JOIN payments p ON c.CourierID = p.CourierID
+GROUP BY c.CourierID, c.SenderName, c.ReceiverName;
+
+
+28. List payments made on a specific date
+
+-- Replace 'SpecificDate' with the desired date
+SELECT * FROM payments WHERE PaymentDate = 'SpecificDate';
+
+
+29. Get Courier Information for Each Payment 
+
+SELECT p.*, c.*
+FROM payments p
+JOIN couriers c ON p.CourierID = c.CourierID;
+
+30. Get Payment Details with Location 
+
+SELECT p.*, l.*
+FROM payments p
+JOIN locations l ON p.LocationID = l.LocationID;
+
+31. Calculating Total Payments for Each Courier 
+
+SELECT c.CourierID, c.SenderName, c.ReceiverName, SUM(p.Amount) AS TotalPaymentsReceived
+FROM couriers c
+LEFT JOIN payments p ON c.CourierID = p.CourierID
+GROUP BY c.CourierID, c.SenderName, c.ReceiverName;
+
+32. List Payments Within a Date Range 
+
+-- Replace 'StartDate' and 'EndDate' with the desired date range
+SELECT * FROM payments WHERE PaymentDate BETWEEN 'StartDate' AND 'EndDate';
+
+33. Retrieve a list of all users and their corresponding courier records, including cases where there are 
+no matches on either side 
+
+SELECT u.*, c.*
+FROM users u
+LEFT JOIN couriers c ON u.UserID = c.UserID;
+
+34. Retrieve a list of all couriers and their corresponding services, including cases where there are no 
+matches on either side 
+
+SELECT c.*, cs.*
+FROM couriers c
+LEFT JOIN courierservices cs ON c.ServiceID = cs.ServiceID;
+
+35. Retrieve a list of all employees and their corresponding payments, including cases where there are 
+no matches on either side 
+
+SELECT e.*, p.*
+FROM employees e
+LEFT JOIN payments p ON e.EmployeeID = p.EmployeeID;
+
+36. List all users and all courier services, showing all possible combinations. 
+
+SELECT u.*, cs.*
+FROM users u
+CROSS JOIN courierservices cs;
+
+37. List all employees and all locations, showing all possible combinations: 
+
+SELECT e.*, l.*
+FROM employees e
+CROSS JOIN locations l;
+
+38. Retrieve a list of couriers and their corresponding sender information (if available) 
+
+SELECT c.*, u.*
+FROM couriers c
+LEFT JOIN users u ON c.UserID = u.UserID;
+
+39. Retrieve a list of couriers and their corresponding receiver information (if available): 
+
+SELECT c.*, u.*
+FROM couriers c
+LEFT JOIN users u ON c.UserID = u.UserID;
+
+40. Retrieve a list of couriers along with the courier service details (if available): 
+
+SELECT c.*, cs.*
+FROM couriers c
+LEFT JOIN courierservices cs ON c.ServiceID = cs.ServiceID;
+
+41. Retrieve a list of employees and the number of couriers assigned to each employee: 
+
+SELECT e.EmployeeID, e.Name, COUNT(c.CourierID) AS TotalCouriersAssigned
+FROM employees e
+LEFT JOIN couriers c ON e.EmployeeID = c.EmployeeID
+GROUP BY e.EmployeeID, e.Name;
+
+42. Retrieve a list of locations and the total payment amount received at each location: 
+
+SELECT l.LocationID, l.LocationName, SUM(p.Amount) AS TotalPaymentAmount
+FROM locations l
+LEFT JOIN payments p ON l.LocationID = p.LocationID
+GROUP BY l.LocationID, l.LocationName;
+
+43. Retrieve all couriers sent by the same sender (based on SenderName). 
+
+SELECT c1.*, c2.*
+FROM couriers c1
+JOIN couriers c2 ON c1.SenderName = c2.SenderName AND c1.CourierID <> c2.CourierID;
+
+44. List all employees who share the same role. 
+
+SELECT e1.*, e2.*
+FROM employees e1
+JOIN employees e2 ON e1.Role = e2.Role AND e1.EmployeeID <> e2.EmployeeID;
+
+45. Retrieve all payments made for couriers sent from the same location. 
+
+SELECT p1.*, p2.*
+FROM payments p1
+JOIN payments p2 ON p1.LocationID = p2.LocationID AND p1.PaymentID <> p2.PaymentID;
+
+46. Retrieve all couriers sent from the same location (based on SenderAddress). 
+
+SELECT c1.*, c2.*
+FROM couriers c1
+JOIN couriers c2 ON c1.SenderAddress = c2.SenderAddress AND c1.CourierID <> c2.CourierID;
+
+47. List employees and the number of couriers they have delivered: 
+
+SELECT e.EmployeeID, e.Name, COUNT(c.CourierID) AS TotalCouriersDelivered
+FROM employees e
+LEFT JOIN couriers c ON e.EmployeeID = c.EmployeeID AND c.Status = 'Delivered'
+GROUP BY e.EmployeeID, e.Name;
+
+48. Find couriers that were paid an amount greater than the cost of their respective courier services
+
+SELECT c.*, p.*
+FROM couriers c
+JOIN payments p ON c.CourierID = p.CourierID
+JOIN courierservices cs ON c.ServiceID = cs.ServiceID
+WHERE p.Amount > cs.Cost;
+
