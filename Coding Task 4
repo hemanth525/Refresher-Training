@@ -1,0 +1,232 @@
+9. Parcel Tracking: Create a program that allows users to input a parcel tracking number.Store the tracking number and Status in 2d String 
+Array. Initialize the array with values. Then, simulate the tracking process by displaying messages like "Parcel in transit," "Parcel out 
+for delivery," or "Parcel delivered" based on the tracking number's status.
+
+public class ParcelTrackingProgram {
+    public static void main(String[] args) {
+        // Simulated parcel tracking data
+        String[][] trackingData = {
+                {"TrackingNumber1", "In transit"},
+                {"TrackingNumber2", "Out for delivery"},
+                {"TrackingNumber3", "Delivered"}
+        };
+
+        // Simulated user input
+        String inputTrackingNumber = "TrackingNumber2";
+
+        simulateParcelTracking(trackingData, inputTrackingNumber);
+    }
+
+    private static void simulateParcelTracking(String[][] trackingData, String trackingNumber) {
+        for (String[] data : trackingData) {
+            if (data[0].equals(trackingNumber)) {
+                System.out.println("Tracking Number: " + data[0]);
+                System.out.println("Status: " + data[1]);
+                return;
+            }
+        }
+        System.out.println("Tracking number not found.");
+    }
+}
+
+
+10. Customer Data Validation: Write a function which takes 2 parameters, data-denotes the data and 
+detail-denotes if it is name addtress or phone number.Validate customer information based on 
+following critirea. Ensure that names contain only letters and are properly capitalized, addresses do not 
+contain special characters, and phone numbers follow a specific format (e.g., ###-###-####). 
+
+public class CustomerDataValidation {
+    public static void main(String[] args) {
+        // Simulated user input
+        String customerName = "John Doe";
+        String address = "123 Main St";
+        String phoneNumber = "555-1234";
+
+        if (validateCustomerData(customerName, address, phoneNumber)) {
+            System.out.println("Customer data is valid.");
+        } else {
+            System.out.println("Invalid customer data.");
+        }
+    }
+
+    private static boolean validateCustomerData(String name, String address, String phoneNumber) {
+        // Simulated validation criteria
+        boolean isNameValid = name.matches("[A-Za-z ]+");
+        boolean isAddressValid = !address.matches(".*[^a-zA-Z0-9 ].*");
+        boolean isPhoneNumberValid = phoneNumber.matches("\\d{3}-\\d{4}");
+
+        return isNameValid && isAddressValid && isPhoneNumberValid;
+    }
+}
+
+11. Address Formatting: Develop a function that takes an address as input (street, city, state, zip code) 
+and formats it correctly, including capitalizing the first letter of each word and properly formatting the 
+zip code. 
+
+public class AddressFormatter {
+    public static void main(String[] args) {
+        // Simulated user input
+        String street = "123 main St";
+        String city = "Cityville";
+        String state = "State";
+        String zipCode = "12345";
+
+        String formattedAddress = formatAddress(street, city, state, zipCode);
+        System.out.println("Formatted Address: " + formattedAddress);
+    }
+
+    private static String formatAddress(String street, String city, String state, String zipCode) {
+        // Simulated formatting logic
+        String formattedStreet = capitalizeWords(street);
+        String formattedCity = capitalizeWords(city);
+        String formattedState = capitalizeWords(state);
+        String formattedZipCode = zipCode;
+
+        return formattedStreet + ", " + formattedCity + ", " + formattedState + " " + formattedZipCode;
+    }
+
+    private static String capitalizeWords(String input) {
+        // Simulated method to capitalize the first letter of each word
+        String[] words = input.split(" ");
+        for (int i = 0; i < words.length; i++) {
+            words[i] = words[i].substring(0, 1).toUpperCase() + words[i].substring(1).toLowerCase();
+        }
+        return String.join(" ", words);
+    }
+}
+
+12. Order Confirmation Email: Create a program that generates an order confirmation email. The email 
+should include details such as the customer's name, order number, delivery address, and expected 
+delivery date. 
+
+import java.util.HashMap;
+
+public class OrderConfirmationEmail {
+    public static void main(String[] args) {
+        // Simulated order data
+        HashMap<String, String> orderDetails = new HashMap<>();
+        orderDetails.put("CustomerName", "John Doe");
+        orderDetails.put("OrderNumber", "123456");
+        orderDetails.put("DeliveryAddress", "123 Main St");
+        orderDetails.put("ExpectedDeliveryDate", "2024-01-20");
+
+        generateOrderConfirmationEmail(orderDetails);
+    }
+
+    private static void generateOrderConfirmationEmail(HashMap<String, String> orderDetails) {
+        // Simulated email content generation
+        System.out.println("Subject: Order Confirmation");
+        System.out.println("Dear " + orderDetails.get("CustomerName") + ",");
+        System.out.println("Thank you for your order. Your order number is: " + orderDetails.get("OrderNumber"));
+        System.out.println("Your order will be delivered to: " + orderDetails.get("DeliveryAddress"));
+        System.out.println("Expected delivery date: " + orderDetails.get("ExpectedDeliveryDate"));
+        System.out.println("Thank you for choosing our courier service.");
+    }
+}
+
+
+13. Calculate Shipping Costs: Develop a function that calculates the shipping cost based on the distance 
+between two locations and the weight of the parcel. You can use string inputs for the source and 
+destination addresses.
+
+import java.util.Scanner;
+
+public class ShippingCostCalculator {
+    public static void main(String[] args) {
+        // Simulated user input
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter source address: ");
+        String sourceAddress = scanner.nextLine();
+        System.out.print("Enter destination address: ");
+        String destinationAddress = scanner.nextLine();
+        System.out.print("Enter parcel weight (in kg): ");
+        double parcelWeight = scanner.nextDouble();
+
+        double shippingCost = calculateShippingCost(sourceAddress, destinationAddress, parcelWeight);
+        System.out.println("Shipping cost: $" + shippingCost);
+    }
+
+    private static double calculateShippingCost(String sourceAddress, String destinationAddress, double parcelWeight) {
+        // Simulated calculation logic
+        // In a real-world scenario, this would involve more sophisticated calculations.
+        return parcelWeight * 5; // Assuming $5 per kg for simplicity
+    }
+}
+
+14. Password Generator: Create a function that generates secure passwords for courier system 
+accounts. Ensure the passwords contain a mix of uppercase letters, lowercase letters, numbers, and 
+special characters.
+
+import java.security.SecureRandom;
+
+public class PasswordGenerator {
+    public static void main(String[] args) {
+        String generatedPassword = generateSecurePassword();
+        System.out.println("Generated Password: " + generatedPassword);
+    }
+
+    private static String generateSecurePassword() {
+        String upperChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        String lowerChars = "abcdefghijklmnopqrstuvwxyz";
+        String numberChars = "0123456789";
+        String specialChars = "!@#$%^&*()-_+=<>?";
+
+        String allChars = upperChars + lowerChars + numberChars + specialChars;
+
+        SecureRandom random = new SecureRandom();
+        StringBuilder password = new StringBuilder();
+
+        // Ensure at least one character from each category
+        password.append(upperChars.charAt(random.nextInt(upperChars.length())));
+        password.append(lowerChars.charAt(random.nextInt(lowerChars.length())));
+        password.append(numberChars.charAt(random.nextInt(numberChars.length())));
+        password.append(specialChars.charAt(random.nextInt(specialChars.length())));
+
+        // Generate the remaining characters
+        for (int i = 4; i < 12; i++) {
+            password.append(allChars.charAt(random.nextInt(allChars.length())));
+        }
+
+        return password.toString();
+    }
+}
+
+
+15. Find Similar Addresses: Implement a function that finds similar addresses in the system. This can be 
+useful for identifying duplicate customer entries or optimizing delivery routes.Use string functions to 
+implement this.
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
+public class SimilarAddressFinder {
+    public static void main(String[] args) {
+        // Simulated address data
+        List<String> addresses = new ArrayList<>();
+        addresses.add("123 Main St, Cityville, State, 12345");
+        addresses.add("456 Oak St, Townsville, State, 67890");
+        addresses.add("123 Main St, Cityville, State, 12345"); // Similar to the first address
+
+        HashMap<String, Integer> similarAddressCounts = findSimilarAddresses(addresses);
+
+        for (String address : similarAddressCounts.keySet()) {
+            int count = similarAddressCounts.get(address);
+            System.out.println("Address: " + address + ", Count: " + count);
+        }
+    }
+
+    private static HashMap<String, Integer> findSimilarAddresses(List<String> addresses) {
+        HashMap<String, Integer> addressCounts = new HashMap<>();
+
+        for (String address : addresses) {
+            addressCounts.put(address, addressCounts.getOrDefault(address, 0) + 1);
+        }
+
+        // Filter addresses with count greater than 1 (i.e., similar addresses)
+        addressCounts.entrySet().removeIf(entry -> entry.getValue() <= 1);
+
+        return addressCounts;
+    }
+}
+
