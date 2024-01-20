@@ -1,0 +1,116 @@
+1. Write a program that checks whether a given order is delivered or not based on its status (e.g., "Processing," "Delivered," "Cancelled"). Use if-else statements for this?
+
+import java.util.Scanner;
+
+public class OrderStatusChecker {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the order status: ");
+        String orderStatus = scanner.nextLine();
+
+        if (orderStatus.equalsIgnoreCase("Delivered")) {
+            System.out.println("The order has been delivered.");
+        } else if (orderStatus.equalsIgnoreCase("Processing")) {
+            System.out.println("The order is still processing.");
+        } else if (orderStatus.equalsIgnoreCase("Cancelled")) {
+            System.out.println("The order has been cancelled.");
+        } else {
+            System.out.println("Invalid order status.");
+        }
+    }
+}
+
+
+2. Implement a switch-case statement to categorize parcels based on their weight into "Light," 
+"Medium," or "Heavy." 
+
+import java.util.Scanner;
+
+public class ParcelWeightCategorizer {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the weight of the parcel: ");
+        double weight = scanner.nextDouble();
+
+        String category;
+        switch ((int) weight) {
+            case 0:
+            case 1:
+            case 2:
+                category = "Light";
+                break;
+            case 3:
+            case 4:
+            case 5:
+                category = "Medium";
+                break;
+            default:
+                category = "Heavy";
+                break;
+        }
+
+        System.out.println("The parcel is categorized as: " + category);
+    }
+}
+
+3. Implement User Authentication 1. Create a login system for employees and customers using Java 
+control flow statements. 
+
+import java.util.Scanner;
+
+public class UserAuthentication {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Simulated user data (replace this with database queries)
+        String validEmployeeUsername = "employee";
+        String validEmployeePassword = "employee123";
+        String validCustomerUsername = "customer";
+        String validCustomerPassword = "customer123";
+
+        System.out.print("Enter username: ");
+        String username = scanner.nextLine();
+
+        System.out.print("Enter password: ");
+        String password = scanner.nextLine();
+
+        if (username.equals(validEmployeeUsername) && password.equals(validEmployeePassword)) {
+            System.out.println("Employee login successful!");
+        } else if (username.equals(validCustomerUsername) && password.equals(validCustomerPassword)) {
+            System.out.println("Customer login successful!");
+        } else {
+            System.out.println("Invalid username or password. Login failed.");
+        }
+    }
+}
+
+4. Implement Courier Assignment Logic 1. Develop a mechanism to assign couriers to shipments based 
+on predefined criteria (e.g., proximity, load capacity) using loops.
+
+import java.util.Scanner;
+
+public class CourierAssignment {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Simulated courier and shipment data
+        String[] couriers = {"Courier1", "Courier2", "Courier3"};
+        String[] shipments = {"Shipment1", "Shipment2", "Shipment3"};
+
+        System.out.println("Assigning couriers to shipments...");
+
+        for (String shipment : shipments) {
+            System.out.println("Assigning courier for " + shipment);
+
+            // Simulated assignment logic (replace this with actual assignment criteria)
+            int randomCourierIndex = (int) (Math.random() * couriers.length);
+            String assignedCourier = couriers[randomCourierIndex];
+
+            System.out.println("Courier assigned: " + assignedCourier);
+        }
+    }
+}
+
+
