@@ -1,0 +1,36 @@
+7. Create an array to store the tracking history of a parcel, where each entry represents a location 
+update.
+
+public class ParcelTrackingHistory {
+    public static void main(String[] args) {
+        // Simulated tracking history
+        String[] trackingHistory = {"Location1", "Location2", "Location3"};
+
+        System.out.println("Parcel Tracking History:");
+        for (String location : trackingHistory) {
+            System.out.println(location);
+        }
+    }
+}
+
+8. Implement a method to find the nearest available courier for a new order using an array of couriers. 
+
+public class NearestCourierFinder {
+    public static void main(String[] args) {
+        // Simulated courier data
+        String[] couriers = {"Courier1", "Courier2", "Courier3"};
+        String nearestCourier = findNearestCourier(couriers, "NewOrderLocation");
+
+        System.out.println("Nearest available courier: " + nearestCourier);
+    }
+
+    private static String findNearestCourier(String[] couriers, String orderLocation) {
+        // Simulated method to find the nearest courier
+        // In a real-world scenario, this would involve more sophisticated logic.
+        // For simplicity, let's assume the first courier in the array is the nearest.
+        return couriers.length > 0 ? couriers[0] : null;
+    }
+}
+
+
+
