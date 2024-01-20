@@ -1,0 +1,54 @@
+5. Write a Java program that uses a for loop to display all the orders for a specific customer. 
+
+public class OrderDisplay {
+    public static void main(String[] args) {
+        // Simulated order data
+        String[] orders = {"Order1", "Order2", "Order3"};
+        String customerName = "CustomerName";
+
+        System.out.println("Orders for " + customerName + ":");
+        for (String order : orders) {
+            System.out.println(order);
+        }
+    }
+}
+
+6. Implement a while loop to track the real-time location of a courier until it reaches its destination.
+
+public class CourierTracking {
+    public static void main(String[] args) {
+        // Simulated courier tracking
+        String currentLocation = "StartLocation";
+        String destination = "DestinationLocation";
+
+        System.out.println("Tracking Courier...");
+
+        while (!currentLocation.equals(destination)) {
+            System.out.println("Current Location: " + currentLocation);
+            // Simulated movement to the next location
+            // In a real-world scenario, this would involve updating the courier's location in the database
+            // and obtaining the new location.
+            currentLocation = getNextLocation(currentLocation);
+        }
+
+        System.out.println("Courier has reached the destination: " + destination);
+    }
+
+    private static String getNextLocation(String currentLocation) {
+        // Simulated method to get the next location
+        // In a real-world scenario, this would involve more sophisticated logic.
+        // For simplicity, let's assume a linear movement from StartLocation to DestinationLocation.
+        if (currentLocation.equals("StartLocation")) {
+            return "Location1";
+        } else if (currentLocation.equals("Location1")) {
+            return "Location2";
+        } else if (currentLocation.equals("Location2")) {
+            return "DestinationLocation";
+        } else {
+            // Handle unknown locations
+            return currentLocation;
+        }
+    }
+}
+
+
