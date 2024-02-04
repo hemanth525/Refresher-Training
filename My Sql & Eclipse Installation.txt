@@ -1,0 +1,101 @@
+
+Microsoft Windows [Version 10.0.19045.3803]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\GURUVU NARENDRA UMAR>mysql --version
+mysql  Ver 8.0.35 for Win64 on x86_64 (MySQL Community Server - GPL)
+
+C:\Users\GURUVU NARENDRA UMAR>mysql -u -root -p
+Enter password: ************
+ERROR 1045 (28000): Access denied for user '-root'@'localhost' (using password: YES)
+
+C:\Users\GURUVU NARENDRA UMAR>mysql -u root -p
+Enter password: ************
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 12
+Server version: 8.0.35 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2023, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases
+    -> show databases;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'show databases' at line 2
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+4 rows in set (0.05 sec)
+
+mysql> create database firstDb;
+Query OK, 1 row affected (0.06 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| firstdb            |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+5 rows in set (0.00 sec)
+
+
+
+
+
+
+
+
+Youtube Link For Download : https://youtu.be/k5tICunelSU?si=PIm60aFrRSamWRlG
+
+
+
+
+
+
+
+
+Microsoft Windows [Version 10.0.19045.3803]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\GURUVU NARENDRA UMAR>java -version
+java version "17.0.9" 2023-10-17 LTS
+Java(TM) SE Runtime Environment (build 17.0.9+11-LTS-201)
+Java HotSpot(TM) 64-Bit Server VM (build 17.0.9+11-LTS-201, mixed mode, sharing)
+
+C:\Users\GURUVU NARENDRA UMAR>java --version
+java 17.0.9 2023-10-17 LTS
+Java(TM) SE Runtime Environment (build 17.0.9+11-LTS-201)
+Java HotSpot(TM) 64-Bit Server VM (build 17.0.9+11-LTS-201, mixed mode, sharing)
+
+C:\Users\GURUVU NARENDRA UMAR>
+
+
+
+
+
+
+
+
+Eclipse Installation: https://youtu.be/xXrPA_ONxK4?si=LGVSoRqCsBH7ujjv
+
+
+
+
+
+
+
+
